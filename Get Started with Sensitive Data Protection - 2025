@@ -1,0 +1,7 @@
+nano redact-request.json 
+ curl -s \
+  -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  -H "Content-Type: application/json" \
+  https://dlp.googleapis.com/v2/projects/$DEVSHELL_PROJECT_ID/content:deidentify \
+  -d @redact-request.json -o redact-response.txt
+gsutil cp redact-response.txt gs://qwiklabs-gcp-02-8ac549658d0c-redac
